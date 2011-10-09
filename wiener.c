@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "imlib-1.9.15/Imlib/Imlib.h"
 //#include <complex.h>
-#include <fftw.h>
+#include <fftw3.h>
 #include <math.h>
 #include <stdlib.h>
 
