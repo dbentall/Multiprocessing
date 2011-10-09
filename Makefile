@@ -15,7 +15,7 @@ openMPTest.o: openMPTest.cpp
 	$(CXX) $(CFLAGS) -c openMPTest.cpp
 
 wiener.o: wiener.c
-	$(CC) $(CFLAGS) -c mv wiener.c $(INCPATHS)
+	$(CC) $(CFLAGS) -c wiener.c $(INCPATHS)
 
 clean:
 	rm -rf *o OMPTest
