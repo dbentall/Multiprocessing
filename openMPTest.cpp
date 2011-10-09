@@ -34,6 +34,7 @@ int main(int argc, char* argv[]){
       ostringstream inFile, outFile;
       inFile << FILE_STR << privateNo << EXT;
       outFile << FILE_STR << privateNo << "out-" << EXT;
+      cout << inFile << endl << outFile << endl;
       wFilter(inFile.str().c_str(), outFile.str().c_str(), SIGMA, K);
       #pragma omp critical
       {
