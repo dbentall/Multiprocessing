@@ -4,7 +4,7 @@
 #include "imlib-1.9.15/Imlib/Imlib.h"
 //#include <complex.h>
 #include <fftw3.h>
-#include <rfftw.h>
+//#include <rfftw.h>
 #include <math.h>
 #include <stdlib.h>
 
@@ -188,10 +188,11 @@ wiener (double *kanaal, double *kanpsf, int w, int h, fftw_complex * out,
       psfin[i + j * w][1] = 0;
     }
     }
-  p = fftw2d_create_plan (h, w, FFTW_FORWARD, FFTW_ESTIMATE);
+  p = fftw_plan_dft_2d (h, w, FFTW_FORWARD, FFTW_ESTIMATE);
+  fftw_execute(p);
 
-  fftwnd_one (p, &im[0], &fim[0]);
-  fftwnd_one (p, &psfin[0], &fpsf[0]);
+//   fftwnd_one (p, &im[0], &fim[0]);
+//   fftwnd_one (p, &psfin[0], &fpsf[0]);
   for (j = 0; j < h; j++)
     {
       for (i = 0; i < w; i++)
@@ -208,8 +209,9 @@ wiener (double *kanaal, double *kanpsf, int w, int h, fftw_complex * out,
                 (pow(fpsf[i + j * w][1], 2))));
     }
     }
-  pinv = fftw2d_create_plan (h, w, FFTW_BACKWARD, FFTW_ESTIMATE);
-  fftwnd_one (pinv, &conv[0], &out[0]);
+  pinv = fftw_plan_dft_2d (h, w, FFTW_BACKWARD, FFTW_ESTIMATE);
+  fftw_execute(pinv);
+  //fftwnd_one (pinv, &conv[0], &out[0]);
   free (im);
   free (fim);
   free (psfin);
