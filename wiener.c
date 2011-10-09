@@ -4,7 +4,7 @@
 #include "imlib-1.9.15/Imlib/Imlib.h"
 //#include <complex.h>
 #include <fftw3.h>
-#include <rfftw3.h>
+#include <rfftw.h>
 #include <math.h>
 #include <stdlib.h>
 
