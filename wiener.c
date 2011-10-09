@@ -188,8 +188,10 @@ wiener (double *kanaal, double *kanpsf, int w, int h, fftw_complex * out,
       psfin[i + j * w][1] = 0;
     }
     }
-  p = fftw_plan_dft_2d (h, w, FFTW_FORWARD, FFTW_ESTIMATE);
-  fftw_execute(p);
+  p = fftw_plan_dft_2d (h, w, &im[0], &fim[0], FFTW_FORWARD, FFTW_ESTIMATE);
+  fftw_execute(p, &im[0], &fim[0]);
+  p = fftw_plan_dft_2d (h, w, &psfin[0], &fpsf[0], FFTW_FORWARD, FFTW_ESTIMATE);
+  fftw_execute(p, &psfin[0], &fpsf[0]);
 
 //   fftwnd_one (p, &im[0], &fim[0]);
 //   fftwnd_one (p, &psfin[0], &fpsf[0]);
@@ -209,8 +211,8 @@ wiener (double *kanaal, double *kanpsf, int w, int h, fftw_complex * out,
                 (pow(fpsf[i + j * w][1], 2))));
     }
     }
-  pinv = fftw_plan_dft_2d (h, w, FFTW_BACKWARD, FFTW_ESTIMATE);
-  fftw_execute(pinv);
+  pinv = fftw_plan_dft_2d (h, w, &conv[0], &out[0], FFTW_BACKWARD, FFTW_ESTIMATE);
+  fftw_execute(pinv, &conv[0], &out[0]);
   //fftwnd_one (pinv, &conv[0], &out[0]);
   free (im);
   free (fim);
