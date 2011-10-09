@@ -9,7 +9,7 @@ LIBS = -lfftw3 -lX11 -lXext -ljpeg -lpng -lz -lm -lImlib
 all: OMPTest
 
 OMPTest: openMPTest.o wiener.o
-	$(CXX) openMPTest.o wiener.o -o OMPTest $(LIBPATHS) $(LIBS)
+	$(CXX) $(CFLAGS) openMPTest.o wiener.o -o OMPTest $(LIBPATHS) $(LIBS)
 
 openMPTest.o: openMPTest.cpp
 	$(CXX) $(CFLAGS) -c openMPTest.cpp
