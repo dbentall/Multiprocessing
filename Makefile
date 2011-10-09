@@ -1,10 +1,10 @@
 CXX = g++
 CC = gcc
 CFLAGS = -fopenmp
-INCPATHS = -I/v/frooms/fft/include -I/usr/X11R6/include -I/usr/local/include\
+INCPATHS = -I/usr/X11R6/include -I/usr/local/include\
 -Iimlib-1.9.15/Imlib
 LIBPATHS = -L/usr/X11R6/lib -L/usr/local/lib -Liml
-LIBS = -lfftw3 -lX11 -lXext -ljpeg -lpng -lz -lm -lImlib
+LIBS = -lfftw3 -lX11 -lXext -ljpeg -lpng -lz -lm -lImlib -lfftw
 
 all: OMPTest
 
