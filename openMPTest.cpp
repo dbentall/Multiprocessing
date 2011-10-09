@@ -33,14 +33,14 @@ int main(int argc, char* argv[]){
       }
       ostringstream inFile, outFile;
       inFile << FILE_STR << privateNo << EXT;
-      outFile << FILE_STR << privateNo << "out-" << EXT;
-      cout << inFile.str() << endl << outFile.str() << endl;
-      wFilter(inFile.str().c_str(), outFile.str().c_str(), SIGMA, K);
+      outFile << FILE_STR << privateNo << "-out" << EXT;
       #pragma omp critical
       {
+        cout << inFile.str() << endl << outFile.str() << endl;
         cout << FILE_STR << privateNo << EXT << " thread: "
                 << omp_get_thread_num() << endl;
       }
+      wFilter(inFile.str().c_str(), outFile.str().c_str(), SIGMA, K);
     }
   }
   return 0;
