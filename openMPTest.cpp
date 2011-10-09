@@ -19,7 +19,7 @@ void println(string out){
 int main(int argc, char* argv[]){
   time_t startTime = time(NULL);
   int numImages = 8;
-  int fileNo = 0;
+  int fileNo = 1;
   #pragma omp parallel for shared(fileNo)
   for(int i = 0; i < numImages; i++){
     while(1){
